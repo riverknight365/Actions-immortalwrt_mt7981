@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #默认WIFI名称
-WRT_SSID="OWRT"
+WRT_SSID="immortwrt"
 #默认WIFI密码
-WRT_WORD="87654321"
+WRT_WORD="1234567890"
 
 WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh" 2>/dev/null)
 WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
