@@ -178,7 +178,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
-        rm -rf *uboot.fip *gpt.bin *preloader.bin *recovery.itb *kernel.bin *factory.bin
+       # rm -rf *uboot.fip *gpt.bin *preloader.bin *recovery.itb *kernel.bin *factory.bin
         rm -rf *.buildinfo
         rm -rf *.json
         rm -rf *.manifest
@@ -186,16 +186,16 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: 固件重命名
-      if: steps.organize.outputs.status == 'success' && !cancelled()
-      shell: bash
-      run: |
-        cd openwrt/bin/targets/*/*
-        for file in *mediatek-filogic-*.{bin,fip,itb}; do
-          [ -f "$file" ] || continue
-          new_name=$(echo "$file" | sed 's/mediatek-filogic-//')
-          mv -v "$file" "$new_name"
-        done
+    #- name: 固件重命名
+    #  if: steps.organize.outputs.status == 'success' && !cancelled()
+    #  shell: bash
+    #  run: |
+    #    cd openwrt/bin/targets/*/*
+    #    for file in *mediatek-filogic-*.{bin,fip,itb}; do
+    #     [ -f "$file" ] || continue
+    #      new_name=$(echo "$file" | sed 's/mediatek-filogic-//')
+    #      mv -v "$file" "$new_name"
+    #    done
 
     - name: 上传固件目录
       uses: actions/upload-artifact@main
