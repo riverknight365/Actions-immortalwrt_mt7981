@@ -93,10 +93,10 @@ jobs:
           ./openwrt/staging_dir/host*
           ./openwrt/staging_dir/tool*
 
-    - name: 开启CCACHE配置
-      run: |
-        echo 'CONFIG_DEVEL=y' >> openwrt/.config
-        echo 'CONFIG_CCACHE=y' >> openwrt/.config
+   # - name: 开启CCACHE配置
+   #   run: |
+   #     echo 'CONFIG_DEVEL=y' >> openwrt/.config
+   #     echo 'CONFIG_CCACHE=y' >> openwrt/.config
 
     - name: 更新缓存
       run: |
