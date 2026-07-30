@@ -22,7 +22,7 @@ mkdir -p files/etc/openclash/core
 # CLASH_TUN_VERSION=$(curl -sL https://github.com/vernesong/OpenClash/raw/core/master/core_version | head -n 2 | tail -n 1)
 # CLASH_TUN_URL="https://github.com/vernesong/OpenClash/raw/core/master/premium/clash-linux-amd64-$CLASH_TUN_VERSION.gz"
 # openclash 的 Meta内核版本
-# CLASH_META_URL="https://github.com/vernesong/OpenClash/raw/core/master/meta/clash-linux-amd64.tar.gz"
+ CLASH_META_URL="https://github.com/vernesong/OpenClash/raw/core/master/meta/clash-linux-amd64.tar.gz"
 
 # d大 的 dev内核
 # CLASH_DEV_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/latest | grep /clash-linux-amd64 | awk -F '"' '{print $4}' | head -n 1)
@@ -31,7 +31,7 @@ mkdir -p files/etc/openclash/core
 # CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/tags/premium | grep /clash-linux-amd64-2 | awk -F '"' '{print $4}' | head -n 1)
 
 # Meta内核版本
-CLASH_META_URL=$(curl -sL https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha | grep -o '"browser_download_url": *"[^"]*mihomo-linux-amd64-compatible-alpha-[^"]*\.gz"' | awk -F '"' '{print $4}' | head -n 1)
+# CLASH_META_URL=$(curl -sL https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha | grep -o '"browser_download_url": *"[^"]*mihomo-linux-amd64-compatible-alpha-[^"]*\.gz"' | awk -F '"' '{print $4}' | head -n 1)
 
 # CLASH_DEV_URL="https://raw.githubusercontent.com/vernesong/OpenClash/master/core-lateset/dev/clash-linux-arm64.tar.gz"
 # CLASH_TUN_URL=$(curl -fsSL https://api.github.com/repos/vernesong/OpenClash/contents/core-lateset/premium | grep download_url | grep $1 | awk -F '"' '{print $4}')
