@@ -15,8 +15,8 @@
 mkdir -p files/etc/openclash/core
 
 
-# openclash 的 Meta内核版本
-CLASH_META_URL="https://github.com/vernesong/OpenClash/raw/core/master/meta/clash-linux-amd64.tar.gz"
+# openclash 的 Meta内核版本 arm64
+CLASH_META_URL="https://github.com/vernesong/OpenClash/raw/core/master/meta/clash-linux-arm64.tar.gz"
 
 # Meta内核版本
 # CLASH_META_URL=$(curl -sL https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha | grep -o '"browser_download_url": *"[^"]*mihomo-linux-arm64-alpha-[^"]*\.gz"' | awk -F '"' '{print $4}' | head -n 1)
