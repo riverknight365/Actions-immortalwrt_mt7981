@@ -189,7 +189,7 @@ jobs:
     #    done
 
     - name: 上传固件目录
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@v4
       if: env.UPLOAD_FIRMWARE == 'true' && steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -200,12 +200,15 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
         VERSION1="${REPO_BRANCH#*-}"
+        # 生成唯一标签：日期 + 版本 + 运行编号（或时间戳）
+        # 方式1：使用 GitHub 运行编号（推荐，简洁）
+        echo "release_tag=$(date +"%Y.%m.%d")-${VERSION1}_filogic-${{ github.run_number }}" >> $GITHUB_OUTPUT
         echo -e "🎉 MTK filogic平台\n✅ ${VERSION1} 源码\n❗️ ip地址 : 192.168.8.1" >> release.txt
-        echo "release_tag=$(date +"%Y.%m.%d-${VERSION1}_filogic")" >> $GITHUB_OUTPUT
+        # echo "release_tag=$(date +"%Y.%m.%d-${VERSION1}_filogic")" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 上传固件到发布
-      uses: softprops/action-gh-release@master
+      uses: softprops/action-gh-release@v2
       if: steps.tag.outputs.status == 'success' && !cancelled()
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
