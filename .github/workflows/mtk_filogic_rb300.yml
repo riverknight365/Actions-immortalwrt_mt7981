@@ -16,8 +16,8 @@ permissions: write-all
 on:
   repository_dispatch:
   workflow_dispatch:
-  #schedule:
-  # - cron: 0 02 * * 3
+  schedule:
+   - cron: 0 02 * * 3
         # 分,时,日,月,周。每周 四 20时执行一次 (UTC时间)
   
 env:
@@ -128,7 +128,7 @@ jobs:
         chmod +x $RUST_SH && $RUST_SH
         cd openwrt
         # 复制你自己的配置文件
-        cp -f $GITHUB_WORKSPACE/configs/rax3000m-360t7.config .config
+        cp -f $GITHUB_WORKSPACE/configs/2410.config .config
         chmod +x $GITHUB_WORKSPACE/$SETTINGS_SH && $GITHUB_WORKSPACE/$SETTINGS_SH
         chmod +x $GITHUB_WORKSPACE/$PACKAGES_SH && $GITHUB_WORKSPACE/$PACKAGES_SH
         chmod +x $GITHUB_WORKSPACE/$CLASH_CORE_SH && $GITHUB_WORKSPACE/$CLASH_CORE_SH
